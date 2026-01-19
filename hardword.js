@@ -1,31 +1,17 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
+import words from "an-array-of-english-words" assert { type: "json" };
 
-let listOfWords = [
-    "save",
-    "date",
-    "rope",
-    "nest",
-    "love",
-    "time",
-    "fire",
-    "lost",
-    "mile",
-    "hope",
-    "wind",
-    "vibe",
-    "like",
-    "okay",
-    "dark",
-    "dust",
-    "lamp",
-    "wave",
-    "star",
-    "rock"
-];
+const isHardWord = (eachWord) => {
+    if (eachWord.length != 4) return false;
+    if ((new Set(eachWord)).size != 4) return false;
 
-const randomIndex = Math.floor(Math.random() * listOfWords.length);
-const todayWord = listOfWords[randomIndex];
+    return true;
+}
+
+const hardwords = words.filter(isHardWord);
+const randomIndex = Math.floor(Math.random() * hardwords.length);
+const todayWord = hardwords[randomIndex];
 const trialCount = 6;
 
 
